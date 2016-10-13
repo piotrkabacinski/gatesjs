@@ -1,6 +1,3 @@
-// Don't forget to have karma-cli installed globally
-//
-
 describe('Gates.js unit tests', function() {
 
   var gates = module.exports;

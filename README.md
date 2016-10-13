@@ -1,3 +1,3 @@
 # Gates.js
 
-Set specific callbacks for specific response.
+Set specific callbacks for specific responses.

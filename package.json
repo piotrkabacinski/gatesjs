@@ -1,0 +1,31 @@
+{
+  "name": "gatesJs",
+  "version": "0.0.1",
+  "description": "Set specific callbacks for specific responses",
+  "main": "src/gates.js",
+  "scripts": {
+    "test": "karma start",
+    "start": "gulp minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piotrkabacinski/gatesJs"
+  },
+  "keywords": [
+    "ajax",
+    "gate",
+    "conditions"
+  ],
+  "author": "Piotr Kabaciński",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-uglify": "^2.0.0",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "~2.4.1",
+    "karma": "^0.13.21",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "~0.3.7"
+  }
+}

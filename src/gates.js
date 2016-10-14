@@ -28,11 +28,12 @@ var module = module || {};
                 if (typeof responseCode == "number") {
 
                     this.responseCode = responseCode;
-                    return this;
 
                 }
 
-                return;
+                console.error( "No response code was set for gates" );
+
+                return this;
 
             },
 
@@ -44,23 +45,26 @@ var module = module || {};
              */
             gate: function(settings, callback) {
 
-                if (
-                    (settings[0] === this.responseCode || settings[0] === "*") &&
-                    (settings[1] || settings[1] === "*")
-                ) {
 
-                    callback();
 
-                    this.resolved = true;
+                  if (
+                   (settings[0] === this.responseCode || settings[0] === "*") &&
+                   (settings[1] || settings[1] === "*") &&
+                   !this.resolved
+                  ) {
 
-                }
+                      callback();
 
-                return this;
+                      this.resolved = true;
+
+                  }
+
+                  return this;
 
             },
 
             /**
-             * Defult callback when non of gates where launched
+             * Defult callback when none of gates where launched
              *
              * @param  {Function} callback
              */

@@ -1,1 +1,0 @@
-!function(e){var t={resolved:!1,responseCode:void 0,set:function(e){if("number"==typeof e)return this.responseCode=e,this},gate:function(e,t){return e[0]!==this.responseCode&&"*"!==e[0]||!e[1]&&"*"!==e[1]||(t(),this.resolved=!0),this},default:function(e){return this.resolved||e(),this}},e=e||{};e.exports=t}(module);

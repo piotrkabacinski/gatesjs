@@ -12,22 +12,22 @@ Install gatesJs module:
 $ npm i gatesJs
 ```
 
-Include gates module in your project:
+Include module in your project:
 
 ```JavaScript
-var gates = require('gatesJs');
+var gates = require("gatesJs");
 ```
 
-Set up your gates in main request callback. Usining `set` method pass response's code value:
+Set up your gates in main request callback. Using `set` method pass response's code value:
 
 ```JavaScript
 gates.set( response.code )
 ```
 
-Each gate needs two parameters: array with condition rules and callback functions. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (`foo === true`):
+Each gate needs two parameters: `array` with condition rules and `callback` function. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (e.g. `foo === true`):
 
 ```JavaScript
-request('http://example.com/foo.json', function (error, response, body) {
+request("http://example.com/foo.json", function (error, response, body) {
 
   var body = JSON.parse( body ); // => { foo: true }
 
@@ -47,15 +47,18 @@ If there's a possibility the condition could not been met, set default callback 
  });
 ```
 
-For any kind of reponse codes or any expression use asterisk `*` argument:
+For any kind of response codes or any expression use asterisk `*` argument:
 
 ```JavaScript
  .gate([ "*", data.foo === false ], function() {
     console.log( "Hello callback for whatever status and falsy foo!" );
  })
+ .gate([ 404, "*" ], function() {
+    console.log( "Hello callback for whatever status and falsy foo!" );
+ })
 ```
 
-When you clone the repistory don't forget to check the live example by launching `$ node index.js` after `$ npm install`.
+When you clone the repository check the live example by launching `$ node index.js` after `$ npm install` for more examples.
 
 ## License
 

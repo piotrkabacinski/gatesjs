@@ -54,7 +54,7 @@ For any kind of response codes or any expression use asterisk `*` argument:
     console.log( "Hello callback for whatever status and falsy foo!" );
  })
  .gate([ 404, "*" ], function() {
-    console.log( "Hello callback for whatever status and falsy foo!" );
+    console.log( "Hello callback for 404 status and whatever!" );
  })
 ```
 

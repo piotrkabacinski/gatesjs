@@ -1,12 +1,10 @@
 /**
+ *
  * @author: Piotr Kabaciński
  * @version: 0.1.3
  * licence: MIT
  * https://github.com/piotrkabacinski/gatesJs
  *
- */
-
-/**
  * Module declaration pattern inspired by Numeral.js library.
  * https://github.com/adamwdraper/Numeral-js/blob/master/src/numeral.js
  *
@@ -26,7 +24,7 @@
         global.gatesJs = factory();
 
     }
-    
+
 }(this, function() {
 
     var gates = {

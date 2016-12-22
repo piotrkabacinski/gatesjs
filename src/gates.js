@@ -1,85 +1,110 @@
-var module = module || {};
+/**
+ * @author: Piotr Kabaciński
+ * @version: 0.1.3
+ * licence: MIT
+ * https://github.com/piotrkabacinski/gatesJs
+ *
+ */
 
-(function(module) {
+/**
+ * Module declaration pattern inspired by Numeral.js library.
+ * https://github.com/adamwdraper/Numeral-js/blob/master/src/numeral.js
+ *
+ */
+(function(global, factory) {
 
-  var gates = {
+    if (typeof define === 'function' && define.amd) {
 
-            /**
-             * Set to true for preventing initiating default callback when
-             * any others were launched
-             *
-             * @type {Boolean}
-             */
-            resolved: false,
+        define(factory);
 
-            /**
-             * Response's status code
-             * @type {[number]}
-             */
-            responseCode: undefined,
+    } else if (typeof module === 'object' && module.exports) {
 
-            /**
-             * Setter for response code
-             *
-             * @param  {[number]} responseCode
-             */
-            set: function(responseCode) {
+        module.exports = factory();
 
-                if (typeof responseCode == "number") {
+    } else {
 
-                    this.responseCode = responseCode;
+        global.gatesJs = factory();
 
-                }
+    }
+    
+}(this, function() {
 
-                console.error( "No response code was set for gates" );
+    var gates = {
 
-                return this;
+        /**
+         * Set to true for preventing initiating default callback when
+         * any others were launched
+         *
+         * @type {Boolean}
+         */
+        resolved: false,
 
-            },
+        /**
+         * Response's status code
+         * @type {number}
+         */
+        responseCode: undefined,
 
-            /**
-             * Gate entry
-             *
-             * @param  {[array]}   settings array with status code and expression
-             * @param  {Function} callback
-             */
-            gate: function(settings, callback) {
+        /**
+         * Setter for response code
+         *
+         * @param  {[number]} responseCode
+         */
+        set: function(responseCode) {
 
+            if (typeof responseCode == "number") {
 
-
-                  if (
-                   (settings[0] === this.responseCode || settings[0] === "*") &&
-                   (settings[1] || settings[1] === "*") &&
-                   !this.resolved
-                  ) {
-
-                      callback();
-
-                      this.resolved = true;
-
-                  }
-
-                  return this;
-
-            },
-
-            /**
-             * Defult callback when none of gates where launched
-             *
-             * @param  {Function} callback
-             */
-            default: function(callback) {
-
-                if (!this.resolved) {
-                    callback();
-                }
+                this.responseCode = responseCode;
 
                 return this;
 
             }
 
-        };
+            console.error("No response code was set for gates");
 
-    module.exports = gates;
+        },
 
-})(module);
+        /**
+         * Gate entry
+         *
+         * @param  {[array]}   settings array with status code and expression
+         * @param  {Function} callback
+         */
+        gate: function(settings, callback) {
+
+            if (
+                (settings[0] === this.responseCode || settings[0] === "*") &&
+                (settings[1] || settings[1] === "*") &&
+                !this.resolved
+            ) {
+
+                callback();
+
+                this.resolved = true;
+
+            }
+
+            return this;
+
+        },
+
+        /**
+         * Defult callback when none of gates where launched
+         *
+         * @param  {Function} callback
+         */
+        default: function(callback) {
+
+            if (!this.resolved) {
+                callback();
+            }
+
+            return this;
+
+        }
+
+    };
+
+    return gates;
+
+}));

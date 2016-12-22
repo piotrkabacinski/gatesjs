@@ -5,7 +5,7 @@ module.exports = function(config) {
 		frameworks: ['jasmine'],
 		files: [
 			"src/gates.js",
-			"src/tests.js"
+			"src/gates.spec.js"
 		],
 		browsers: [ 'Chrome' , 'Firefox' ],
 		customLaunchers: {

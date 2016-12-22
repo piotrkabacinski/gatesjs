@@ -9,7 +9,7 @@ Set specific callbacks for specific responses.
 Install gatesJs module:
 
 ```bash
-$ npm i gatesJs
+$ npm install gatesJs --save
 ```
 
 Include module in your project:
@@ -21,7 +21,7 @@ var gates = require("gatesJs");
 Set up your gates in main request callback. Using `set` method pass response's code value:
 
 ```JavaScript
-gates.set( response.code )
+gates.set( response.statusCode )
 ```
 
 Each gate needs two parameters: `array` with condition rules and `callback` function. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (e.g. `foo === true`):

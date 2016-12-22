@@ -1,6 +1,6 @@
 describe('Gates.js unit tests', function() {
 
-  var gates = module.exports;
+  var gates = gatesJs;
 
   var responseCode = {
       content: {

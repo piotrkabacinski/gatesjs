@@ -20,12 +20,9 @@ var gates = require("./src/gates.js"),
 
     });
 
-    app.listen('8080', function() {
-    	console.log('http://localhost:8080/');
-    });
+    app.listen('8080', () => console.log( 'http://localhost:8080/' ) );
 
-
-    request('http://localhost:8080/mock', function (error, response, body) {
+    request('http://localhost:8080/mock', (error, response, body) => {
 
       var body = JSON.parse( body );
 
@@ -36,5 +33,5 @@ var gates = require("./src/gates.js"),
                .gate([503, body.foo], () =>  console.log("Hello 503 callback and true foo!") )
                .gate(["*", "*"], () => console.log("Hello whatever callback!") )
                .default( () => console.log("Hello default callback!") );
-               
+
       });

@@ -27,7 +27,7 @@ gates.set( response.statusCode )
 Each gate needs two parameters: `array` with condition rules and `callback` function. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (e.g. `foo === true`):
 
 ```JavaScript
-request("http://example.com/foo.json", function (error, response, body) {
+request("http://example.com/foo.json", (error, response, body) => {
 
   let body = JSON.parse( body ); // => { foo: true }
 

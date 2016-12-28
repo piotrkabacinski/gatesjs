@@ -1,6 +1,6 @@
 {
-  "name": "gatesJs",
-  "version": "0.1.3",
+  "name": "gatesjs",
+  "version": "0.1.4",
   "description": "Set specific callbacks for specific server responses",
   "main": "src/gates.js",
   "scripts": {
@@ -9,13 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/piotrkabacinski/gatesJs"
+    "url": "https://github.com/piotrkabacinski/gates.js"
   },
   "keywords": [
     "ajax",
     "gates",
     "conditions",
-    "responses"
+    "respons",
+    "async",
+    "callback",
+    "promise"
   ],
   "author": "Piotr Kabaciński",
   "license": "MIT",

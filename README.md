@@ -6,16 +6,16 @@ Set specific callbacks for specific responses.
 
 ## Usage
 
-Install gatesJs module:
+Install gates.js module:
 
 ```bash
-$ npm install gatesJs --save
+$ npm install gatesjs --save
 ```
 
 Include module in your project:
 
 ```JavaScript
-var gates = require("gatesJs");
+var gates = require("gatesjs");
 ```
 
 Set up your gates in main request callback. Using `set` method pass response's code value:

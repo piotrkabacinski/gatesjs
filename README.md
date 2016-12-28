@@ -37,7 +37,7 @@ request("http://example.com/foo.json", function (error, response, body) {
 
 });
 ```
-If there's a possibility the condition could not been met, set default callback using `default` method:
+If there's a possibility the condition could not be met, set default callback using `default` method:
 
 ```JavaScript
  .default( () => console.log( "Hello default callback!" ) );
@@ -50,7 +50,7 @@ For any kind of response codes or any expression use asterisk `*` argument:
  .gate([ 404, "*" ], () =>  console.log( "Hello callback for 404 status and whatever!" ) );
 ```
 
-When you clone the repository check the live example by launching `$ node index.js` after `$ npm install` for more examples.
+When you clone the repository check for more examples by launching `$ node index.js` after `$ npm install`.
 
 ## License
 

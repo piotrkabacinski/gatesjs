@@ -30,24 +30,11 @@ var gates = require("./src/gates.js"),
       var body = JSON.parse( body );
 
           gates.set(response.statusCode)
-
-          .gate([200, !body.foo], function() {
-                  console.log("Hello 200 callback and false foo!");
-              })
-              .gate([200, body.foo], function() {
-                  console.log("Hello 200 callback and true foo!");
-              })
-              .gate([404, "*"], function() {
-                  console.log("Hello 404 callback and whatever foo!");
-              })
-              .gate([503, body.foo], function() {
-                  console.log("Hello 503 callback and true foo!");
-              })
-              .gate(["*", "*"], function() {
-                  console.log("Hello whatever callback!");
-              })
-              .default(function() {
-                  console.log("Hello default callback!");
-              });
-
+               .gate([200, !body.foo], () => console.log("Hello 200 callback and false foo!") )
+               .gate([200, body.foo], () => console.log("Hello 200 callback and true foo!") )
+               .gate([404, "*"], () => console.log("Hello 404 callback and whatever foo!") )
+               .gate([503, body.foo], () =>  console.log("Hello 503 callback and true foo!") )
+               .gate(["*", "*"], () => console.log("Hello whatever callback!") )
+               .default( () => console.log("Hello default callback!") );
+               
       });

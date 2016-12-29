@@ -1,4 +1,4 @@
-var gates = require("./src/gates.js"),
+var gates = require("./dist/gates.min.js"),
     request = require('request'),
     express = require('express'),
     fs = require('fs'),

@@ -1,7 +1,7 @@
 /**
  *
  * @author: Piotr Kabaciński
- * @version: 0.1.3
+ * @version: 0.1.6
  * licence: MIT
  * https://github.com/piotrkabacinski/gatesJs
  *

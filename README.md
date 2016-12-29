@@ -1,6 +1,6 @@
 # Gates.js
 
-[![Build Status](https://travis-ci.org/piotrkabacinski/gatesJs.svg?branch=master)](https://travis-ci.org/piotrkabacinski/gatesJs)
+[![Build Status](https://api.travis-ci.org/piotrkabacinski/gates.js.svg?branch=master)](https://api.travis-ci.org/piotrkabacinski/gates.js.svg?branch=master)
 
 Set specific callbacks for specific responses.
 
@@ -24,7 +24,7 @@ Set up your gates in main request callback. Using `set` method pass response's c
 gates.set( response.statusCode )
 ```
 
-Each gate needs two parameters: `array` with condition rules and `callback` function. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (e.g. `foo === true`):
+Each gate function needs two parameters: `array` with condition rules and `callback` function. The first array's element is an expected status code (required, in example below `200`), the second one is an optional expression (e.g. `foo === true`):
 
 ```JavaScript
 request("http://example.com/foo.json", (error, response, body) => {

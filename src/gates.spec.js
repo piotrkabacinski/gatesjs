@@ -9,7 +9,7 @@ describe('Gates.js unit tests', function() {
       statusCode: 200
   };
 
-  let value;
+  var value;
 
   it('Check success response and true expression', function() {
 

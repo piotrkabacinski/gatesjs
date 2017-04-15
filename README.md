@@ -15,7 +15,7 @@ $ npm install gatesjs --save
 Include module in your project:
 
 ```JavaScript
-let gates = require("gatesjs");
+const gates = require("gatesjs");
 ```
 
 Set up your gates in main request callback. Using `set` method pass response's code value:
@@ -29,7 +29,7 @@ Each gate function needs two parameters: `array` with condition rules and `callb
 ```JavaScript
 request("http://example.com/foo.json", (error, response, body) => {
 
-  let body = JSON.parse( body ); // => { foo: true }
+  body = JSON.parse( body ); // => { foo: true }
 
   gates.set( response.code )
 

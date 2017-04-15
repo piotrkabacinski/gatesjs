@@ -1,17 +1,17 @@
 describe('Gates.js unit tests', function() {
 
-  var gates = gatesJs;
+  const gates = gatesJs;
 
-  var responseCode = {
+  const responseCode = {
       content: {
           foo: true
       },
       statusCode: 200
   };
 
-  var value;
+  let value;
 
-  it('Check true response and true expression', function() {
+  it('Check success response and true expression', function() {
 
     gates.set(responseCode.statusCode)
          .gate([200, responseCode.content.foo === true], function() {
@@ -34,6 +34,34 @@ describe('Gates.js unit tests', function() {
           .gate(["*", "*"], function() {
              value = true;
            })
+          .default(function (){
+            value = false;
+          });
+
+    expect(value).toEqual(true);
+
+  });
+
+  it('Launch whatever response and true expression', function() {
+
+    gates.set(responseCode.statusCode)
+         .gate(["*", responseCode.content.foo === false], function() {
+            value = false;
+          })
+          .default(function (){
+            value = false;
+          });
+
+    expect(value).toEqual(true);
+
+  });
+
+  it('Check susccess response and whatever expression', function() {
+
+    gates.set(responseCode.statusCode)
+         .gate([200, "*"], function() {
+            value = true;
+          })
           .default(function (){
             value = false;
           });

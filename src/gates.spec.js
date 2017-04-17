@@ -1,4 +1,4 @@
-describe('Gates.js unit tests: ', () => {
+describe('Gates.js unit tests: ', function() {
 
     const gates = gatesJs;
 
@@ -11,13 +11,13 @@ describe('Gates.js unit tests: ', () => {
 
     var value;
 
-    it('1. Success response and true expression', () => {
+    it('1. Success response and true expression', function() {
 
         new gates().set(responseCode.statusCode)
-            .gate([200, responseCode.content.foo === true], () => {
+            .gate([200, responseCode.content.foo === true], function() {
                 value = true;
             })
-            .default(() => {
+            .default(function() {
                 value = false;
             });
 
@@ -25,52 +25,18 @@ describe('Gates.js unit tests: ', () => {
 
     });
 
-    it('2. Whatever response and whatever expression', () => {
+    it('2. Whatever response and whatever expression', function() {
 
         value = undefined;
 
         new gates().set(responseCode.statusCode)
-            .gate([200, responseCode.content.foo === false], () => {
+            .gate([200, responseCode.content.foo === false], function() {
                 value = false;
             })
-            .gate(["*", "*"], () => {
+            .gate(["*", "*"], function() {
                 value = true;
             })
-            .default(() => {
-                value = false;
-            });
-
-        expect(value).toEqual(true);
-
-    });
-
-    it('3. Whatever response and true expression', () => {
-
-        value = undefined;
-
-        new gates().set(responseCode.statusCode)
-            .gate(["*", responseCode.content.foo === true], () => {
-                value = true;
-            })
-            .default(() => {
-                value = false;
-            });
-
-        expect(value).toEqual(true);
-
-        value = undefined;
-
-    });
-
-    it('4. Susccess response and whatever expression', () => {
-
-        value = undefined;
-
-        new gates().set(responseCode.statusCode)
-            .gate([200, "*"], () => {
-                value = true;
-            })
-            .default(() => {
+            .default(function() {
                 value = false;
             });
 
@@ -78,15 +44,49 @@ describe('Gates.js unit tests: ', () => {
 
     });
 
-    it('5. Susccess response and no expression', () => {
+    it('3. Whatever response and true expression', function() {
 
         value = undefined;
 
         new gates().set(responseCode.statusCode)
-            .gate([200], () => {
+            .gate(["*", responseCode.content.foo === true], function() {
                 value = true;
             })
-            .default(() => {
+            .default(function() {
+                value = false;
+            });
+
+        expect(value).toEqual(true);
+
+        value = undefined;
+
+    });
+
+    it('4. Susccess response and whatever expression', function() {
+
+        value = undefined;
+
+        new gates().set(responseCode.statusCode)
+            .gate([200, "*"], function() {
+                value = true;
+            })
+            .default(function() {
+                value = false;
+            });
+
+        expect(value).toEqual(true);
+
+    });
+
+    it('5. Susccess response and no expression', function() {
+
+        value = undefined;
+
+        new gates().set(responseCode.statusCode)
+            .gate([200], function() {
+                value = true;
+            })
+            .default(function() {
                 value = false;
             });
 

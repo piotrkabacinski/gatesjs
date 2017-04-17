@@ -1,7 +1,7 @@
 /**
  *
  * @author: Piotr Kabaciński
- * @version: 0.1.6
+ * @version: 0.1.8
  * licence: MIT
  * https://github.com/piotrkabacinski/gatesJs
  *
@@ -11,11 +11,11 @@
  */
 (function(global, factory) {
 
-    if (typeof define === 'function' && define.amd) {
+    if (typeof define === "function" && define.amd) {
 
         define(factory);
 
-    } else if (typeof module === 'object' && module.exports) {
+    } else if (typeof module === "object" && module.exports) {
 
         module.exports = factory();
 
@@ -27,7 +27,7 @@
 
 }(this, function() {
 
-    var gates = {
+    var gates = function() {
 
         /**
          * Set to true for preventing initiating default callback when
@@ -35,22 +35,22 @@
          *
          * @type {Boolean}
          */
-        resolved: false,
+        this.resolved = false;
 
         /**
          * Response's status code
          * @type {number}
          */
-        responseCode: undefined,
+        this.responseCode = undefined;
 
         /**
          * Setter for response code
          *
          * @param  {[number]} responseCode
          */
-        set: function(responseCode) {
+        this.set = function(responseCode) {
 
-            if (typeof responseCode == "number") {
+            if (typeof responseCode === "number") {
 
                 this.responseCode = responseCode;
 
@@ -58,9 +58,9 @@
 
             }
 
-            console.error("No response code was set for gates");
+            console.error("No response code was set for gates intance");
 
-        },
+        };
 
         /**
          * Gate entry
@@ -68,38 +68,41 @@
          * @param  {[array]}   settings array with status code and expression
          * @param  {Function} callback
          */
-        gate: function(settings, callback) {
+        this.gate = function(settings, callback) {
 
             if (
                 (settings[0] === this.responseCode || settings[0] === "*") &&
-                (settings[1] || settings[1] === "*") &&
+                (settings[1] || settings[1] === "*" || settings[1] === undefined) &&
                 !this.resolved
             ) {
 
-                callback();
+                if( typeof callback === "function" ) {
 
-                this.resolved = true;
+                  callback();
+                  this.resolved = true;
+
+                }
 
             }
 
             return this;
 
-        },
+        };
 
         /**
          * Defult callback when none of gates where launched
          *
          * @param  {Function} callback
          */
-        default: function(callback) {
+        this.default = function(callback) {
 
-            if (!this.resolved) {
+            if ( !this.resolved && typeof callback === "function" ) {
                 callback();
             }
 
             return this;
 
-        }
+        };
 
     };
 

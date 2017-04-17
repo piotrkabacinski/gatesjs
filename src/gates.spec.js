@@ -1,73 +1,97 @@
-describe('Gates.js unit tests', function() {
+describe('Gates.js unit tests: ', () => {
 
-  const gates = gatesJs;
+    const gates = gatesJs;
 
-  const responseCode = {
-      content: {
-          foo: true
-      },
-      statusCode: 200
-  };
+    const responseCode = {
+        content: {
+            foo: true
+        },
+        statusCode: 200
+    };
 
-  var value;
+    var value;
 
-  it('Check success response and true expression', function() {
+    it('1. Success response and true expression', () => {
 
-    gates.set(responseCode.statusCode)
-         .gate([200, responseCode.content.foo === true], function() {
-            value = true;
-          })
-          .default(function (){
-            value = false;
-          });
+        new gates().set(responseCode.statusCode)
+            .gate([200, responseCode.content.foo === true], () => {
+                value = true;
+            })
+            .default(() => {
+                value = false;
+            });
 
-    expect(value).toEqual(true);
+        expect(value).toEqual(true);
 
-  });
+    });
 
-  it('Launch whatever response and whatever expression', function() {
+    it('2. Whatever response and whatever expression', () => {
 
-    gates.set(responseCode.statusCode)
-         .gate([200, responseCode.content.foo === false], function() {
-            value = false;
-          })
-          .gate(["*", "*"], function() {
-             value = true;
-           })
-          .default(function (){
-            value = false;
-          });
+        value = undefined;
 
-    expect(value).toEqual(true);
+        new gates().set(responseCode.statusCode)
+            .gate([200, responseCode.content.foo === false], () => {
+                value = false;
+            })
+            .gate(["*", "*"], () => {
+                value = true;
+            })
+            .default(() => {
+                value = false;
+            });
 
-  });
+        expect(value).toEqual(true);
 
-  it('Launch whatever response and true expression', function() {
+    });
 
-    gates.set(responseCode.statusCode)
-         .gate(["*", responseCode.content.foo === false], function() {
-            value = false;
-          })
-          .default(function (){
-            value = false;
-          });
+    it('3. Whatever response and true expression', () => {
 
-    expect(value).toEqual(true);
+        value = undefined;
 
-  });
+        new gates().set(responseCode.statusCode)
+            .gate(["*", responseCode.content.foo === true], () => {
+                value = true;
+            })
+            .default(() => {
+                value = false;
+            });
 
-  it('Check susccess response and whatever expression', function() {
+        expect(value).toEqual(true);
 
-    gates.set(responseCode.statusCode)
-         .gate([200, "*"], function() {
-            value = true;
-          })
-          .default(function (){
-            value = false;
-          });
+        value = undefined;
 
-    expect(value).toEqual(true);
+    });
 
-  });
+    it('4. Susccess response and whatever expression', () => {
+
+        value = undefined;
+
+        new gates().set(responseCode.statusCode)
+            .gate([200, "*"], () => {
+                value = true;
+            })
+            .default(() => {
+                value = false;
+            });
+
+        expect(value).toEqual(true);
+
+    });
+
+    it('5. Susccess response and no expression', () => {
+
+        value = undefined;
+
+        new gates().set(responseCode.statusCode)
+            .gate([200], () => {
+                value = true;
+            })
+            .default(() => {
+                value = false;
+            });
+
+        expect(value).toEqual(true);
+
+    });
 
 });

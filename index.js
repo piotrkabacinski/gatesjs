@@ -1,8 +1,8 @@
 const gates = require("./dist/gates.min.js"),
-     request = require('request'),
-     express = require('express'),
-     fs = require('fs'),
-     app = express();
+      request = require('request'),
+      express = require('express'),
+      fs = require('fs'),
+      app = express();
 
 /**
  * Set response with random code and json's property value
@@ -28,7 +28,7 @@ request('http://localhost:8080/mock', (error, response, body) => {
 
     body = JSON.parse(body);
 
-    gates.set(response.statusCode)
+    new gates().set(response.statusCode)
         .gate([200, !body.foo], () => console.log("Hello 200 callback and false foo!"))
         .gate([200, body.foo], () => console.log("Hello 200 callback and true foo!"))
         .gate([404, "*"], () => console.log("Hello 404 callback and whatever foo!"))

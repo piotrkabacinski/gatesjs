@@ -7,7 +7,7 @@ module.exports = function(config) {
 			"src/gates.js",
 			"src/gates.spec.js"
 		],
-		browsers: [ 'Chrome' , 'Firefox' ],
+		browsers: [ 'Chrome', 'Firefox' ],
 		customLaunchers: {
 				Chrome_travis_ci: {
 				base: 'Chrome',

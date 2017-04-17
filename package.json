@@ -1,6 +1,6 @@
 {
   "name": "gatesjs",
-  "version": "0.1.7",
+  "version": "1.0.0",
   "description": "Set specific callbacks for specific server responses",
   "main": "src/gates.js",
   "scripts": {

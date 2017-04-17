@@ -1,7 +1,7 @@
 /**
  *
  * @author: Piotr Kabaciński
- * @version: 0.1.8
+ * @version: 1.0.1
  * licence: MIT
  * https://github.com/piotrkabacinski/gatesJs
  *
@@ -72,7 +72,7 @@
 
             if (
                 (settings[0] === this.responseCode || settings[0] === "*") &&
-                (settings[1] || settings[1] === "*" || settings[1] === undefined) &&
+                (settings[1] === true || settings[1] === "*" || settings[1] === undefined) &&
                 !this.resolved
             ) {
 

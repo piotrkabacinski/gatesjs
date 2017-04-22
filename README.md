@@ -1,6 +1,6 @@
 # Gates.js
 
-[![Build Status](https://api.travis-ci.org/piotrkabacinski/gates.js.svg?branch=master)](https://api.travis-ci.org/piotrkabacinski/gates.js.svg?branch=master)
+[![Build Status](https://travis-ci.org/piotrkabacinski/gatesjs.svg?branch=master)](https://travis-ci.org/piotrkabacinski/gatesjs)
 
 Set specific callbacks for specific responses.
 

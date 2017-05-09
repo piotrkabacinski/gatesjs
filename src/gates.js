@@ -58,7 +58,7 @@
 
             }
 
-            console.error("No response code was set for gates intance");
+            console.error("No response code was set for gates instance");
 
         };
 

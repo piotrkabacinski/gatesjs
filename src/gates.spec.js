@@ -11,6 +11,10 @@ describe('Gates.js unit tests: ', function() {
 
     var value;
 
+    afterEach(function() {
+      value = undefined;
+    });
+
     it('1. Success response and true expression', function() {
 
         new gates().set(responseCode.statusCode)
@@ -26,8 +30,6 @@ describe('Gates.js unit tests: ', function() {
     });
 
     it('2. Whatever response and whatever expression', function() {
-
-        value = undefined;
 
         new gates().set(responseCode.statusCode)
             .gate([200, responseCode.content.foo === false], function() {
@@ -46,8 +48,6 @@ describe('Gates.js unit tests: ', function() {
 
     it('3. Whatever response and true expression', function() {
 
-        value = undefined;
-
         new gates().set(responseCode.statusCode)
             .gate(["*", responseCode.content.foo === true], function() {
                 value = true;
@@ -58,13 +58,9 @@ describe('Gates.js unit tests: ', function() {
 
         expect(value).toEqual(true);
 
-        value = undefined;
-
     });
 
     it('4. Susccess response and whatever expression', function() {
-
-        value = undefined;
 
         new gates().set(responseCode.statusCode)
             .gate([200, "*"], function() {
@@ -79,8 +75,6 @@ describe('Gates.js unit tests: ', function() {
     });
 
     it('5. Susccess response and no expression', function() {
-
-        value = undefined;
 
         new gates().set(responseCode.statusCode)
             .gate([200], function() {

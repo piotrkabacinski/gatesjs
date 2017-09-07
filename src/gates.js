@@ -51,15 +51,11 @@
         this.set = function(responseCode) {
 
             if (typeof responseCode === "number") {
-
                 this.responseCode = responseCode;
-
                 return this;
-
             }
 
-            console.error("No response code was set for gates instance");
-
+            throw ('No response code was set for gates instance');
         };
 
         /**
@@ -75,18 +71,13 @@
                 (settings[1] === true || settings[1] === "*" || settings[1] === undefined) &&
                 !this.resolved
             ) {
-
                 if( typeof callback === "function" ) {
-
                   callback();
                   this.resolved = true;
-
                 }
-
             }
 
             return this;
-
         };
 
         /**
@@ -96,14 +87,12 @@
          */
         this.default = function(callback) {
 
-            if ( !this.resolved && typeof callback === "function" ) {
+            if (!this.resolved && typeof callback === "function") {
                 callback();
             }
 
             return this;
-
         };
-
     };
 
     return gates;

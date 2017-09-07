@@ -7,9 +7,9 @@ const gates = require('./dist/gates.min.js'),
 /**
  * Set response with random code and json's property value
  */
-app.get('/mock', function(request, response) {
+app.get('/mock', (request, response) => {
 
-    let httpResponses = [200, 404, 503],
+  const httpResponses = [200, 404, 503],
         jsonStatusValue = [true, false],
         data = {
             foo: jsonStatusValue[Math.floor(Math.random() * jsonStatusValue.length)]

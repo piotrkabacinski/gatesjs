@@ -41,7 +41,7 @@
          * Response's status code
          * @type {number}
          */
-        this.responseCode = undefined;
+        this.responseCode = null;
 
         /**
          * Setter for response code

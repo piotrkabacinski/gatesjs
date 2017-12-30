@@ -1,6 +1,8 @@
 # Gates.js
 
-[![Build Status](https://travis-ci.org/piotrkabacinski/gatesjs.svg?branch=master)](https://travis-ci.org/piotrkabacinski/gatesjs)
+[![Build Status](https://travis-ci.org/piotrkabacinski/gatesjs.svg?branch=master)](https://travis-ci.org/piotrkabacinski/gatesjs) ![NPM](https://img.shields.io/npm/v/gatesjs.svg) ![Dependencies](https://david-dm.org/gatesjs/gatesjs/status.svg) ![MIT](https://img.shields.io/npm/l/gatesjs.svg)
+
+
 
 Set specific callbacks for specific responses.
 

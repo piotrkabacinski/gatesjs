@@ -34,7 +34,9 @@ request("http://example.com/foo.json", (error, response, body) => {
 
   new gates()
        .set(response.code)
-       .gate([200, body.foo === true], () => { console.log('Hello 200 status callback and true foo!'); });
+       .gate([200, body.foo === true], () => {
+           console.log('Hello 200 status callback and true foo!');
+       });
 });
 ```
 If there's a possibility the condition could not be met, set default callback using `default` method:

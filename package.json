@@ -34,5 +34,8 @@
     "karma-firefox-launcher": "^0.1.7",
     "karma-jasmine": "~0.3.7",
     "request": "^2.75.0"
+  },
+  "dependencies": {
+    "jsdom": "^11.11.0"
   }
 }

@@ -2,38 +2,41 @@ const gates = require('./dist/gates.min.js'),
       request = require('request'),
       express = require('express'),
       fs = require('fs'),
-      app = express();
+      app = express(),
+      jsdom = require("jsdom");
 
-/**
- * Set response with random code and json's property value
- */
-app.get('/mock', (request, response) => {
-
-  const httpResponses = [200, 404, 503],
-        jsonStatusValue = [true, false],
-        data = {
-            foo: jsonStatusValue[Math.floor(Math.random() * jsonStatusValue.length)]
-        },
-        status = httpResponses[Math.floor(Math.random() * httpResponses.length)];
-
-    console.log(`Response: ${status}, ${data.foo}`);
-
-    response.status(status).send(data);
-
-});
+const { JSDOM } = jsdom;
 
 app.listen('8080', () => { console.log('http://localhost:8080/'); });
 
-request('http://localhost:8080/mock', (error, response, body) => {
+const parseHTML = (html) => {
+    if(!html) return undefined;
 
-    body = JSON.parse(body);
+    const dom = new JSDOM(html);
+    const document = dom.window.document;
 
-    new gates().set(response.statusCode)
-        .gate([200, !body.foo], () => { console.log('Hello 200 callback and false foo!'); } )
-        .gate([200, body.foo], () => { console.log('Hello 200 callback and true foo!'); })
-        .gate([404, '*'], () => { console.log('Hello 404 callback and whatever foo!'); })
-        .gate([503, body.foo], () => { console.log('Hello 503 callback and true foo!'); })
-        .gate(['*', '*'], () => { console.log('Hello whatever callback!'); })
-        .default(() => { console.log('Hello default callback!'); });
+    const h1 = document.querySelector("h1").textContent;
+    const uls = [];
 
+    document.querySelectorAll("ul li").forEach((li) => {
+        uls.push(li.textContent)
+    });
+
+    return {
+        h1,
+        uls
+    }
+}
+
+const getWidgetHTMLCode = () => {
+    return new Promise((resolve, reject) => {
+        request('http://studio363.info/temp/lambda-aws.html', (error, response, body) => {
+          if(error) reject(error);
+          resolve(parseHTML(body));
+        });
+    });
+}
+
+getWidgetHTMLCode().then((data) => {
+    console.log({ foo: JSON.stringify(data) });
 });

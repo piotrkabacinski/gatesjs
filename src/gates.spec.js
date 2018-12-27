@@ -15,7 +15,7 @@ describe('Gates.js unit tests: ', function() {
       value = undefined;
     });
 
-    it('1. Success response and true expression', function() {
+    it('Success response and true expression', function() {
 
         new gates().set(responseCode.statusCode)
             .gate([200, responseCode.content.foo === true], function() {
@@ -29,7 +29,7 @@ describe('Gates.js unit tests: ', function() {
 
     });
 
-    it('2. Whatever response and whatever expression', function() {
+    it('Whatever response and whatever expression', function() {
 
         new gates().set(responseCode.statusCode)
             .gate([200, responseCode.content.foo === false], function() {
@@ -46,7 +46,7 @@ describe('Gates.js unit tests: ', function() {
 
     });
 
-    it('3. Whatever response and true expression', function() {
+    it('Whatever response and true expression', function() {
 
         new gates().set(responseCode.statusCode)
             .gate(["*", responseCode.content.foo === true], function() {
@@ -60,7 +60,7 @@ describe('Gates.js unit tests: ', function() {
 
     });
 
-    it('4. Susccess response and whatever expression', function() {
+    it('Susccess response and whatever expression', function() {
 
         new gates().set(responseCode.statusCode)
             .gate([200, "*"], function() {
@@ -74,7 +74,7 @@ describe('Gates.js unit tests: ', function() {
 
     });
 
-    it('5. Susccess response and no expression', function() {
+    it('Susccess response and no expression', function() {
 
         new gates().set(responseCode.statusCode)
             .gate([200], function() {

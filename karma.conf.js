@@ -1,15 +1,13 @@
 module.exports = function(config) {
-
 	config.set({
-
 		frameworks: ['jasmine'],
 		files: [
 			"src/gates.js",
 			"src/gates.spec.js"
 		],
-		browsers: [ 'Chrome', 'Firefox' ],
+		browsers: [ 'ChromeHeadless' ],
 		customLaunchers: {
-				Chrome_travis_ci: {
+			Chrome_travis_ci: {
 				base: 'Chrome',
 				flags: ['--no-sandbox']
 			}
@@ -18,9 +16,6 @@ module.exports = function(config) {
 	});
 
 	if(process.env.TRAVIS){
-
       config.browsers = ['Chrome_travis_ci'];
-
     }
-
 };

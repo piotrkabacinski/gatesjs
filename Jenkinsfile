@@ -13,4 +13,9 @@ pipeline {
             }
         }
     }
+    post {
+        cleanup {
+            sh 'rm -f node_modules'
+        }
+  }
 }

@@ -34,6 +34,7 @@
     "karma-chrome-launcher": "^2.2.0",
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "~0.3.7",
+    "puppeteer": "^1.11.0",
     "request": "^2.75.0"
   },
   "dependencies": {
